@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^library/',include('library.urls')), 
     url(r'^$',RedirectView.as_view(url='/library/',permanent=True)),
+     url('^accounts/', include('django.contrib.auth.urls')),
+   
 ]
