@@ -69,4 +69,4 @@ class BookInstance(models.Model):
 
     def __str__(self):
         
-        return '%s, %s' % (self.last_name, self.first_name)
+        return '{0}'.format(self.book)

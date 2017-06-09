@@ -19,5 +19,8 @@
     <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
     {% endfor %}
   </div>
+  {% if user.is_authenticated %}
+  <small> <a href ="{% url 'book-delete' book.id %}"> Delete this book!</a></small>
+  {% endif %}
  
 {% endblock %}

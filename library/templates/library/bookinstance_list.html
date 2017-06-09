@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if bookinstance_list %}
+<ul>
+
+ {% for books in bookinstance_list %}
+    <li><a href ="{% url 'book-detail' books.book.id %}">{{ books.book }}</a></li>
+    <h5> {{ books.id }}</h5>
+    <h5> {{ books.imprint }}</h5>
+    </br>
+{% endfor %}
+</ul>
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -29,4 +29,6 @@
         {% else %}
         <h4> No book</h4>
 {% endif %}
+{% if user.is_authenticated %}
+<h5> <a href ="{% url 'book-create'%}"> Add a new book </a> </h5> {% endif %}
 {% endblock %}
