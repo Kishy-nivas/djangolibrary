@@ -10,6 +10,13 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
+
+    def display_genre(self):
+        """
+        Creates a string for the Genre. This is required to display genre in Admin.
+        """
+        return ', '.join([ genre.name for genre in self.genre.all()[:3] ])
+        display_genre.short_description = 'Genre'
     
 class Book(models.Model):
     title=models.CharField(max_length=100)
@@ -18,12 +25,14 @@ class Book(models.Model):
     isbn = models.CharField('ISBN',max_length=13 ,help_text='13 Character <a href="https://www.isbn-international.org/content/what-isbn">ISBN number</a>' )
     genre = models.ManyToManyField(Genre,help_text = 'selct a genre for this book')
 
-
+    class Meta:
+        ordering =["title"]
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse('book-detail',args=[str(self.id)] )
+
 
 
 class Author(models.Model):
@@ -59,7 +68,5 @@ class BookInstance(models.Model):
         
 
     def __str__(self):
-        """
-        String for representing the Model object
-        """
-        return '%s (%s)' % (self.id,self.book.title)
+        
+        return '%s, %s' % (self.last_name, self.first_name)

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h3> Dynamic library content </h3>
+<ul>
+   <li> <small>Book instance :{{bookinstance_count}}</small></li>
+  <li>  <small>Authors:{{author_count}}</small>
+   <li><a href = "{% url 'books' %}"> <small>Book  :{{book_count}}</small></a></li>
+   <li> <small>Genre :{{genre_count}}</small></li>
+</ul>
+{% endblock %}
