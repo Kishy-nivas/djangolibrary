@@ -12,6 +12,7 @@ urlpatterns =[
     url('^book/create/$',views.BookCreate.as_view(),name ='book-create'),
     url('^book/delete/(?P<pk>\d+)$',views.BookDelete.as_view(),name='book-delete'),
     url('^bookinstance/$',views.BookInstanceView.as_view(),name='book-instance'),
+    url('^search/$',views.search,name ='search '),
 
 
 ]

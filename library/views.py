@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Author,Book,BookInstance,Genre
 from django.views import generic
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 # Create your views here.
@@ -52,3 +53,7 @@ class BookDelete(DeleteView):
 class BookInstanceView(generic.ListView):
     model = BookInstance 
     fields = ['id','book','imprint']
+
+def search(request):
+    query = Book.objects.filter(Q(title__icontains = request.POST['searchbox']) |Q(summary__icontains = request.POST['searchbox']))
+    return render (request, 'library/search.html',{'query': query})

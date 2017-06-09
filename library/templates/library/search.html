@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if query %}
+<div class ='center'>
+ <h4 > found : {{query.count}} </h4>
+ <ul>
+    {% for q in query %}
+    <li> <a href ="{% url 'book-detail' q.id %}">{{q.title }}</a></li>
+    {% endfor %}
+ </ul>
+ {% else %}
+ <h4> No results found </h4>
+ {% endif %}
+</div>
+
+
+{% endblock %}
