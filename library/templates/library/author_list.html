@@ -12,5 +12,8 @@
 {% else %}
 <h4> No author present </h4>
 {% endif %}
+{% if user.is_authenticated %}
+<a href ="{% url 'author-create' %}"> Create author! </a>
+{% endif %}
 {% endblock content  %}
     

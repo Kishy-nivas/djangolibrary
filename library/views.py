@@ -10,8 +10,10 @@ def index(request):
     book_count = Book.objects.all().count()
     bookinstance_count = BookInstance.objects.all().count()
     genre_count = Genre.objects.all().count()
+    num_visits = request.session.get('num_visits',0)
+    request.session['num_visits']= num_visits + 1
     return render(request,'library/index.html',{'author_count' :author_count,
-    'book_count':book_count,'bookinstance_count':bookinstance_count,'genre_count':genre_count })
+    'book_count':book_count,'bookinstance_count':bookinstance_count,'genre_count':genre_count,'num_visits' : num_visits })
 
 class BookListView(generic.ListView):
     model = Book
@@ -26,3 +28,18 @@ class AuthorListView(generic.ListView):
 
 class AuthorDetailView(generic.DetailView):
     model = Author
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Author
+
+class AuthorCreate(CreateView):
+    model = Author
+    fields = '__all__'
+
+class AuthorUpdate(UpdateView):
+    model = Author
+    fields = ['first_name','last_name','date_of_birth','date_of_death']
+
+class AuthorDelete(DeleteView):
+    model = Author
+    success_url = reverse_lazy('authors')
