@@ -45,7 +45,7 @@ class Author(models.Model):
         return '{0},{1}'.format(self.first_name,self.last_name)
 
     def get_absolute_url(self):
-        return reverse('autor-detail',args=[str(self.id)])
+        return reverse('author-detail',args=[str(self.id)])
 
 
 class BookInstance(models.Model):

@@ -14,10 +14,15 @@ def index(request):
     'book_count':book_count,'bookinstance_count':bookinstance_count,'genre_count':genre_count })
 
 class BookListView(generic.ListView):
-    queryset =Book.objects.all()
     model = Book
+    queryset =Book.objects.all()
     paginate_by = 2
-    
 
 class BookDetailView(generic.DetailView):
     model = Book 
+
+class AuthorListView(generic.ListView):
+    model = Author
+
+class AuthorDetailView(generic.DetailView):
+    model = Author

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if author %}
+<h5> Name :  {{ author.first_name }} </h5>
+<br>
+<h5> Books written : </h5>
+<ul>
+    {% for books in author.book_set.all %}
+    <li> <a href = "{{ books.get_absolute_url }}"> {{ books.title }} </a></li>
+    {{ books.summary }}
+    {% endfor %}
+{% endif %}
+</ul>
+
+
+
+
+
+{% endblock content %}
+    
